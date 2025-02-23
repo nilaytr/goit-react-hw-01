@@ -1,26 +1,28 @@
-//inline styling
+import userData from "./userData.json";
+import Profile from './components/Profile/Profile.jsx';
 
-import Alert from "./components/Alert/Alert";
+import friends from "./friends.json";
+import FriendList from "./components/FriendList/FriendList.jsx";
 
-import { HiUser } from "react-icons/hi";
+import transactions from "./transactions.json";
+import TransactionHistory from "./components/TransactionHistory/TransactionHistory";
 
-export default function App() {
+import "./App.css";
+
+const App = () => {
   return (
     <>
-      <Alert variant="info">
-        Would you like to browse our recommended products?
-      </Alert>
-      <Alert variant="error">
-        There was an error during your last transaction
-      </Alert>
-      <Alert variant="success">
-        Payment received, thank you for your purchase
-      </Alert>
-      <Alert variant="warning">
-        Please update your profile contact information
-      </Alert>
-
-      <HiUser />
+      <Profile
+        name={userData.username}
+        tag={userData.tag}
+        location={userData.location}
+        image={userData.avatar}
+        stats={userData.stats}
+      />
+      <FriendList friends={friends} />
+      <TransactionHistory items={transactions} />
     </>
   );
-}
+};
+
+export default App
